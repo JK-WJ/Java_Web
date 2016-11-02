@@ -9,17 +9,15 @@ import java.io.IOException;
 /**
  * Created by WJPC on 2016/11/2.
  */
-@WebServlet(name = "ServletContextDemo1")
-public class ServletContextDemo1 extends HttpServlet {
+@WebServlet(name = "ServletContextDemo3")
+public class ServletContextDemo3 extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String data = "Hi, I'm ServletContextDemo1";
-
-        ServletContext context = this.getServletConfig().getServletContext(); //获得ServletContext对象
-        context.setAttribute("data", data); //将data存储到ServletContext对象中
-        response.getWriter().print("ServletContextDemo1");
+        ServletContext context = this.getServletContext();
+        String contextInitParam = context.getInitParameter("url"); //获取整个web站点的初始化参数
+        response.getWriter().print(contextInitParam);
     }
 }

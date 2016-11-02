@@ -4,6 +4,12 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+    <!-- 配置WEB应用的初始化参数 -->
+    <context-param>
+        <param-name>url</param-name>
+        <param-value>loacalhost/ServletContextDemo3</param-value>
+    </context-param>
+
     <servlet>
         <servlet-name>HelloWorld</servlet-name>
         <servlet-class>HelloWorld</servlet-class>
@@ -68,6 +74,36 @@
     <servlet-mapping>
         <servlet-name>ServletContextDemo2</servlet-name>
         <url-pattern>/ServletContextDemo2</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletContextDemo3</servlet-name>
+        <servlet-class>ServletContextDemo3</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ServletContextDemo3</servlet-name>
+        <url-pattern>/ServletContextDemo3</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletContextDemo4</servlet-name>
+        <servlet-class>ServletContextDemo4</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ServletContextDemo4</servlet-name>
+        <url-pattern>/ServletContextDemo4</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletContextDemo5</servlet-name>
+        <servlet-class>ServletContextDemo5</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ServletContextDemo5</servlet-name>
+        <url-pattern>/ServletContextDemo5</url-pattern>
     </servlet-mapping>
 
 </web-app>
