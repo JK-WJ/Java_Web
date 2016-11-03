@@ -17,8 +17,6 @@
     <form action="${pageContext.request.contextPath}/Servlet" method="Get">
       <input type="text" name="name"/>
       <input type="submit" value="post测试"/>
-      <img src="HelloWorld" width="100" height="50"/>
     </form>
-
   </body>
 </html>

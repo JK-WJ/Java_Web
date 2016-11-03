@@ -20,6 +20,11 @@ public class Servlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Post 中文乱码解决：
+        request.setCharacterEncoding("UTF-8");
+        String name = request.getParameter("name");
+        // 通过设置响应头控制游览器以UTF-8的编码显示数据
+        response.setHeader("content-type", "text/html;charset=UTF-8");
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
@@ -28,6 +33,7 @@ public class Servlet extends HttpServlet {
         out.println("  <BODY>");
         out.print("    This is ");
         out.print(this.getClass());
+        out.print(" get name:" + name);
         out.println(", using the Post method");
         out.println("  </BODY>");
         out.println("</HTML>");
@@ -36,6 +42,14 @@ public class Servlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Get 中文乱码解决：
+        String name1 = request.getParameter("name");
+        name1 = new String(name1.getBytes("ISO8859-1"), "UTF-8") ;
+        // 通过设置响应头控制游览器以UTF-8的编码显示数据
+        response.setHeader("content-type", "text/html;charset=UTF-8");
+        response.getWriter().print("name=" + name1);
+        response.getWriter().print("<hr/>");
+
         // 获取在web.xml中配置的初始化参数
         String paramVal = this.config.getInitParameter("name");
         response.getWriter().print(paramVal);
@@ -49,19 +63,5 @@ public class Servlet extends HttpServlet {
             response.getWriter().print(name + "=" + value + "<br/>");
         }
         response.getWriter().print("<hr/>");
-
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-        out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-        out.println("<HTML>");
-        out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-        out.println("  <BODY>");
-        out.print("    This is ");
-        out.print(this.getClass());
-        out.println(", using the GET method");
-        out.println("  </BODY>");
-        out.println("</HTML>");
-        out.flush();
-        out.close();
     }
 }
