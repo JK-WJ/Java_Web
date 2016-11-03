@@ -23,6 +23,7 @@ public class HelloWorld extends HttpServlet {
         // 设置逻辑实现
         PrintWriter out = resp.getWriter();
         out.println("<h1>" + message + "</h3>");
+        out.println("<h1>" + req.getContextPath() + "</h3>");
     }
 
     @Override
